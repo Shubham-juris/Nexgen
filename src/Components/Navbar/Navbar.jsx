@@ -30,9 +30,7 @@ const Search = styled('div')({
   backgroundColor: '#f1f1f1',
   marginLeft: '16px',
   width: '100%',
-  maxWidth: '300px',
-  // width:'150px',
-  // maxWidth: {xs: '150px', sm:'300px'},
+  maxWidth: '190px',
   display: 'flex',
   alignItems: 'center',
 });
@@ -47,7 +45,7 @@ const SearchIconWrapper = styled('div')({
 
 const Input = styled(InputBase)({
   paddingLeft: '30px',
-  width: '100%',
+  width: { xs: '100%', md: '80%', lg: '100%' },
 });
 
 const Navbar = () => {

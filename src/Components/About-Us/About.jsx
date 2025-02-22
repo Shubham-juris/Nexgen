@@ -77,7 +77,7 @@ const About = () => {
       ],
     },
     {
-      title: 'State-of-the-Art Infrastructure',  
+      title: 'State-of-the-Art Infrastructure',
       details: [
         'Smart classrooms with audio-visual aids for interactive learning.',
         'Well-equipped science and computer labs for practical education.',
@@ -111,18 +111,21 @@ const About = () => {
       {/* About Section */}
       <Box
         sx={{
-          
           display: 'flex',
-          flexDirection: { xs: 'column', sm: 'row', },
+          flexDirection: { xs: 'column-reverse', sm: 'row' },
           justifyContent: 'center',
           alignItems: 'center',
-          margin: { xs: 2, sm: 4, },
-
+          margin: { xs: 2, sm: 4 },
         }}
         data-aos='fade-up' // Add AOS animation
       >
-        <Box sx={{ padding: { xs: 2, sm: 4, }, textAlign: 'center', marginTop:'10%'
- }}>
+        <Box
+          sx={{
+            padding: { xs: 3, sm: 4 },
+            textAlign: 'left',
+            marginTop: '5%',
+          }}
+        >
           <Typography variant='h6'>
             At our academy, we empower learners with innovative education,
             fostering growth, creativity, and success through personalized
@@ -134,16 +137,15 @@ const About = () => {
           src={img1}
           alt='About Us'
           sx={{
-            marginTop:'10%',
-            width: { xs: '100%', sm: 500,},
-            height: { xs: '100%', sm: 450, },
-            borderRadius: '8px',
-            boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+            marginTop: { xs: '25%', sm: '10%' },
+            width: { xs: '100%', sm: 900 },
+            height: { xs: '100%', sm: 250 },
+            borderRadius: '8px 50px',
+            boxShadow: '0 10px 6px rgba(0,0,0,0.6)',
             transition: 'transform 0.2s ease, box-shadow 0.3s ease',
             '&:hover': {
               transform: 'scale(1.03)',
               boxShadow: '0 8px 12px rgba(0,0,0,0.2)',
-
             },
           }}
           data-aos='zoom-in' // Add AOS animation
@@ -151,9 +153,12 @@ const About = () => {
       </Box>
 
       {/* Introduction */}
-      <Box sx={{ textAlign: 'center', my: 4 }} data-aos='fade-down'>
+      <Box
+        sx={{ textAlign: 'center', marginY: { xs: 2, sm: 4 } }}
+        data-aos='fade-down'
+      >
         <Typography variant='h4'>About Us</Typography>
-        <Typography>
+        <Typography textAlign='left'>
           Nexgen Educare Academy is a leading educational institution committed
           to delivering exceptional learning experiences that empower students
           to achieve academic excellence and personal growth. Founded on the
@@ -166,25 +171,30 @@ const About = () => {
       {/* What We Offer Section */}
       <Box
         sx={{
+          overflowY: 'hidden',
           backgroundImage: `url(${img2})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          padding: { xs: 3, sm: 6, },
+          padding: { xs: 2, sm: 4 },
           textAlign: 'center',
+          borderRadius: '10px',
         }}
         data-aos='fade-right'
       >
         <Container
           sx={{
-            backgroundColor: 'rgba(255, 255, 255, 0.85)',
-            padding: { xs: '3rem', sm: '4rem' ,},
+            overflow: 'hidden',
+            backgroundColor: 'rgba(255, 255, 255, 0.7)',
+            padding: { xs: '2rem', sm: '3rem' },
             width: '100%',
+            boxShadow: '5px 5px 10px rgba(51, 49, 49, 0.6)',
+            borderRadius: '10px',
           }}
         >
           <Typography variant='h4' sx={{ marginY: 3, fontWeight: 'bold' }}>
             What We Offer
           </Typography>
-          <Grid container spacing={1}>
+          <Grid container spacing={1} sx={{ overflow: 'hidden' }}>
             {offerings.map((offer, index) => (
               <Grid
                 item
@@ -197,6 +207,7 @@ const About = () => {
               >
                 <Box
                   sx={{
+                    overflow: 'hidden',
                     marginBottom: 4,
                     textAlign: 'left',
                     transition: 'transform 0.3s ease',
@@ -206,10 +217,14 @@ const About = () => {
                     },
                   }}
                 >
-                  <Typography variant='h6' sx={{ fontWeight: 'bold' }}>
+                  <Typography
+                    variant='h6'
+                    sx={{ fontWeight: 'bold', padding: '0px' }}
+                  >
                     {offer.title}
                   </Typography>
-                  <ul style={{ paddingLeft: '20px' }}>
+
+                  <ul style={{ paddingLeft: '2px', width: '100%' }}>
                     {offer.details.map((detail, detailIndex) => (
                       <li key={detailIndex}>
                         <Typography>{detail}</Typography>

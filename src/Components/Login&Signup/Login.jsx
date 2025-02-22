@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// import '../Login&Signup/Login.css';
 import {
   Box,
   TextField,
@@ -16,7 +17,9 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Visibility, VisibilityOff, ArrowBack } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
-import LoginImage from '../../assets/Login&Signup/Login&Signup.jpg';
+import LoginImage2 from '../../assets/Login&Signup/loginImage3.jpg';
+import bgImage2 from '../../assets/Login&Signup/bgimage2.jpg';
+import Logoimg from '../../assets/LogoImg/Logo.png';
 
 const Login = ({ onLogin }) => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -73,12 +76,12 @@ const Login = ({ onLogin }) => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundImage: `url(${LoginImage})`,
+        backgroundImage: `url(${bgImage2})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
     >
-      <Container maxWidth='xs'>
+      <Container maxWidth='md' display='flex'>
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -86,85 +89,185 @@ const Login = ({ onLogin }) => {
           data-aos='fade-up'
         >
           <Box
-            sx={{
-              marginTop: 8,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              background: 'rgba(255, 255, 255, 0.85)',
-              padding: 4,
-              borderRadius: 2,
-              boxShadow: 3,
-              position: 'relative',
-              width: '100%',
-            }}
+            width='100%'
+            // paddingX='5%'
+            border='none'
+            // borderRadius='20px'
+            display='flex'
+            justifyContent='center'
+            flexDirection={{ xs: 'column', sm: 'row', md: 'row' }}
+            boxShadow='5px 5px 10px rgb(139, 125, 125)'
           >
-            <IconButton
-              onClick={() => navigate(-1)}
-              sx={{ position: 'absolute', top: 10, left: 10 }}
-            >
-              <ArrowBack />
-            </IconButton>
-
-            <Typography component='h1' variant='h5'>
-              Login
-            </Typography>
             <Box
-              key={formKey}
-              component='form'
-              onSubmit={handleSubmit}
-              sx={{ mt: 3 }}
-            >
-              <TextField
-                margin='normal'
-                required
-                fullWidth
-                id='userId'
-                label='ID'
-                name='userId'
-                autoComplete='username'
-                autoFocus
-              />
-              <TextField
-                margin='normal'
-                required
-                fullWidth
-                name='password'
-                label='Password'
-                type={showPassword ? 'text' : 'password'}
-                id='password'
-                autoComplete='current-password'
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position='end'>
-                      <IconButton
-                        onClick={handleTogglePasswordVisibility}
-                        edge='end'
-                      >
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-              />
-              {loginError && (
-                <Typography color='error' sx={{ mt: 1, textAlign: 'center' }}>
-                  {loginError}
-                </Typography>
-              )}
-              <Button
-                type='submit'
-                fullWidth
-                variant='contained'
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Login
-              </Button>
+              sx={{
+                height: 'auto',
+                backgroundImage: `url(${LoginImage2})`,
+                backgroundSize: 'cover',
+                // marginTop: 8,
+                backgroundColor: 'rgba(255, 255, 255, 1)',
+                display: { sm: 'flex', xs: 'none' },
+                // padding: 2,
+                flexDirection: 'row',
 
-              <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Link href='#' variant='body2' sx={{ textDecoration: 'none' }}>
-                  Forgot password?
-                </Link>
+                justifyContent: 'center',
+                alignItems: 'center',
+                boxShadow: 3,
+                position: 'relative',
+                width: '100%',
+              }}
+            ></Box>
+            <Box
+              sx={{
+                border: 'none',
+                height: { xs: 'auto', sm: 'auto' },
+                borderRadius: { xs: '10px', sm: '0px' },
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                background: {
+                  xs: `url(${LoginImage2}) no-repeat center center`,
+                  sm: '#fff',
+                },
+                backgroundColor: '#fff',
+                backgroundSize: { xs: 'cover' }, // or 'cover' depending on your needs
+                backgroundPosition: { xs: 'center' }, // Ensure the image is centered
+                paddingY: { xs: 2, md: 4 },
+                position: 'relative',
+                width: { xs: '100%', sm: '89%' },
+              }}
+            >
+              {/* <img
+                src={LoginImage2}
+                alt='Login'
+                style={{
+                  visibility: { xs: 'visible', sm: 'hidden' },
+                  width: '100%', // Default for larger screens
+                  maxWidth: '80%', // Adjust the width of the image on smaller screens
+                  height: 'auto',
+                  display: 'block',
+                }}
+              /> */}
+              <Box
+                sx={{
+                  mt: { xs: '1', md: 'auto' },
+                }}
+              >
+                <IconButton
+                  onClick={() => navigate(-1)}
+                  sx={{ position: 'absolute', top: 10, left: 10 }}
+                >
+                  <ArrowBack />
+                </IconButton>
+                <img
+                  style={{ height: '60px' }}
+                  onClick={() => navigate('/')}
+                  src={Logoimg}
+                  alt='logoimg'
+                />
+                <Typography
+                  component='h1'
+                  variant='h5'
+                  sx={
+                    {
+                      // py: 2
+                    }
+                  }
+                >
+                  Login
+                </Typography>
+              </Box>
+              <Box
+                padding='25px'
+                key={formKey}
+                component='form'
+                onSubmit={handleSubmit}
+                sx={{ mt: 1 }}
+              >
+                <TextField
+                  sx={{
+                    overflow: 'visible',
+                    backgroundColor: '#fff',
+                    opacity: 0.8,
+                    border: 'none',
+                    // width: { xs: '80%', sm: '100%' },
+                    // height: { xs: '80%', sm: '100%' },
+                  }}
+                  margin='normal'
+                  required
+                  fullWidth
+                  id='userId'
+                  label='ID'
+                  name='userId'
+                  autoComplete='username'
+                  autoFocus
+                />
+                <TextField
+                  sx={{
+                    overflow: 'visible',
+                    backgroundColor: '#fff',
+                    opacity: 0.8,
+                    border: 'none',
+                  }}
+                  margin='normal'
+                  required
+                  fullWidth
+                  name='password'
+                  label='Password'
+                  type={showPassword ? 'text' : 'password'}
+                  id='password'
+                  autoComplete='current-password'
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment
+                        position='end'
+                        sx={{ overflow: 'hidden' }}
+                      >
+                        <IconButton onClick={handleTogglePasswordVisibility}>
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+                {loginError && (
+                  <Typography color='error' sx={{ mt: 1, textAlign: 'center' }}>
+                    {loginError}
+                  </Typography>
+                )}
+                <Box
+                  width='80%'
+                  margin='10% 10% 0 10%'
+                  display='flex'
+                  justifyContent='center'
+                >
+                  {' '}
+                  <Button
+                    type='submit'
+                    fullWidth
+                    variant='contained'
+                    boxShadow='5px 5px 10px rgba(0,0,0,1)'
+                    sx={{ mt: 3, mb: 2 }}
+                  >
+                    Login
+                  </Button>
+                </Box>
+
+                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <Link
+                    href='#'
+                    variant='body2'
+                    sx={{ textDecoration: 'none' }}
+                  >
+                    Forgot password?
+                  </Link>
+                  <Link
+                    href='/SignUp'
+                    variant='body2'
+                    sx={{ textDecoration: 'none' }}
+                  >
+                    Sign Up
+                  </Link>
+                </Box>
               </Box>
             </Box>
           </Box>
@@ -185,6 +288,15 @@ const Login = ({ onLogin }) => {
         </Alert>
       </Snackbar>
     </Box>
+    // <Box>
+    //   <iframe
+    //     style={{
+    //       height: '100vh',
+    //       width: '100vw',
+    //     }}
+    //     src='https://forms.visme.co/formsPlayer/6x47w1v6-untitled-project'
+    //   ></iframe>
+    // </Box>
   );
 };
 
