@@ -8,7 +8,7 @@ export default defineConfig({
   // Development server configuration
   server: {
     proxy: {
-      '/api': 'http://nexgeneducare.com:4000', // Proxy backend requests during development
+      '/api': 'http://localhost:3000', // Proxy backend requests during development
     },
   },
 

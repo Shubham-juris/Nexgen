@@ -54,7 +54,7 @@ module.exports = (env, argv) => {
     devServer: {
       historyApiFallback: true, // This rewrites all routes to index.html for client-side routing
       compress: true,
-      port: 4000,
+      port: 3000,
       // Disable hot module replacement if you wish to remove live reload errors
       hot: false,
       liveReload: false,

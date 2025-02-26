@@ -199,7 +199,7 @@ const AdminLogin = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://nexgeneducare.com:4000/api/login', {
+      const response = await fetch('http://localhost:3000/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
@@ -311,7 +311,7 @@ const AdminLogin = () => {
           </Box>
         </Box>
       </Container>
-      <ToastContainer position='top-center' autoClose={5000} />
+      <ToastContainer position='top-center' autoClose={3000} />
     </Box>
   );
 };
