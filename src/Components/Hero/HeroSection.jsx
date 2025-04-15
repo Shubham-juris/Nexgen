@@ -23,8 +23,8 @@ const fadeIn = keyframes`
 const HeroSection = () => {
   useEffect(() => {
     AOS.init({
-      duration: 1500, // Animation duration
-      offset: 50, // Offset from the top
+      duration: 1500, 
+      offset: 50, 
     });
   }, []);
 
