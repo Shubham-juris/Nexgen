@@ -111,9 +111,18 @@ const ContactUs = () => {
               <Typography variant='h6' align='center' sx={{ marginTop: 1 }}>
                 OUR MAIN OFFICE
               </Typography>
-              <Typography align='center'>
-                SCO 4-5, Second Floor, New Sunny <br />
-                Enclave, Sector-125, Mohali, Kharar <br />
+
+            </a>
+            <Typography align='center'>
+              <a
+                href='https://www.google.com/maps/place/SCO+4-5,+New+Sunny+Enclave,+Sector+125,+Mohali,+Punjab+140301'
+                target='_blank'
+                rel='noopener noreferrer'
+                style={{ textDecoration: 'none', color: 'inherit' }}
+              >
+                SCO 4/5, Second Floor, New Sunny <br />
+                Enclave, Sector-125, Mohali, Kharar
+                <br />
                 Punjab - 140301
               </Typography>
             </a>

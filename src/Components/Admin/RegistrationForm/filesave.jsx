@@ -18,10 +18,6 @@ import {
   Radio,
   Checkbox,
 } from "@mui/material";
-
-
-
-
 const RegistrationForm = () => {
   const [students, setStudents] = useState([]);
   const [showForm, setShowForm] = useState(false);
