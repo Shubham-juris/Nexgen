@@ -12,7 +12,6 @@ const cardsData = [
   { id: 2, title: 'Tally Prime/ERP 9 ', image: TallyPrime },
   { id: 3, title: 'Busy Software ', image: BusySoftware },
   { id: 4, title: 'Quick Books ', image: QuickBooks },
- 
 ];
 
 const AccountsCoursesCards = () => {
