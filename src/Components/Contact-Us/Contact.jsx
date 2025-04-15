@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
   Box,
   Typography,
@@ -11,7 +11,7 @@ import Grid from '@mui/material/Grid2';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Contact from '../../assets/Contact-Us/Contact.jpg';
@@ -22,11 +22,13 @@ const ContactUs = () => {
   }, []);
 
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
+    from_name: '',
+    from_email: '',
     course: '',
     message: '',
   });
+
+  const formRef = useRef();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,22 +41,25 @@ const ContactUs = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Replace these with your EmailJS service, template, and user IDs
-    const serviceId = 'service_pki17gg';
-    const templateId = 'template_0qfjd5j';
-    const userId = 'FROpYta0fqq18rCgt';
-
-    emailjs.send(serviceId, templateId, formData, userId).then(
-      (response) => {
-        console.log('SUCCESS!', response.status, response.text);
-        alert('Message sent successfully!');
-        setFormData({ name: '', email: '', course: '', message: '' }); // Reset form
-      },
-      (error) => {
-        console.error('FAILED...', error);
-        alert('Message sending failed. Please try again.');
-      }
-    );
+    emailjs
+      .sendForm(
+        'service_lje9sz5',
+        'template_fpw4t0f',
+        formRef.current,
+        'Yuqf4YlQZe4bGFRCd'
+      )
+      .then(
+        (result) => {
+          console.log('SUCCESS!', result.text);
+          alert('Message sent successfully!');
+          setFormData({ from_name: '', from_email: '', course: '', message: '' });
+          formRef.current.reset(); // clear form
+        },
+        (error) => {
+          console.error('FAILED...', error.text);
+          alert('Message sending failed. Please try again.');
+        }
+      );
   };
 
   return (
@@ -68,7 +73,6 @@ const ContactUs = () => {
         },
       }}
     >
-      {/* Header */}
       <Typography
         variant='h4'
         align='center'
@@ -81,16 +85,9 @@ const ContactUs = () => {
         Contact Us
       </Typography>
 
-      {/* Top Section: Cards */}
-      <Grid
-        container
-        spacing={3}
-        sx={{
-          marginTop: 2,
-          justifyContent: 'center',
-        }}
-      >
-        {/* Card 1: Office */}
+      {/* Cards */}
+      <Grid container spacing={3} sx={{ marginTop: 2, justifyContent: 'center' }}>
+        {/* Office */}
         <Grid item xs={12} sm={6} md={4} data-aos='fade-up'>
           <Card
             sx={{
@@ -110,38 +107,20 @@ const ContactUs = () => {
               rel='noopener noreferrer'
               style={{ textDecoration: 'none', color: 'inherit' }}
             >
-              <LocationOnIcon
-                fontSize='large'
-                sx={{ color: 'primary.main', marginBottom: 1 }}
-              />
-            </a>
-            <a
-              href='https://www.google.com/maps/place/SCO+4-5,+New+Sunny+Enclave,+Sector+125,+Mohali,+Punjab+140301'
-              target='_blank'
-              rel='noopener noreferrer'
-              style={{ textDecoration: 'none', color: 'inherit' }}
-            >
+              <LocationOnIcon fontSize='large' sx={{ color: 'primary.main', marginBottom: 1 }} />
               <Typography variant='h6' align='center' sx={{ marginTop: 1 }}>
                 OUR MAIN OFFICE
               </Typography>
-            </a>
-            <Typography align='center'>
-              <a
-                href='https://www.google.com/maps/place/SCO+4-5,+New+Sunny+Enclave,+Sector+125,+Mohali,+Punjab+140301'
-                target='_blank'
-                rel='noopener noreferrer'
-                style={{ textDecoration: 'none', color: 'inherit' }}
-              >
+              <Typography align='center'>
                 SCO 4-5, Second Floor, New Sunny <br />
-                Enclave, Sector-125, Mohali, Kharar
-                <br />
+                Enclave, Sector-125, Mohali, Kharar <br />
                 Punjab - 140301
-              </a>
-            </Typography>
+              </Typography>
+            </a>
           </Card>
         </Grid>
 
-        {/* Card 2: Phone */}
+        {/* Phone */}
         <Grid item xs={12} sm={6} md={4} data-aos='fade-up'>
           <Card
             sx={{
@@ -155,35 +134,17 @@ const ContactUs = () => {
               width: { xs: '295px', sm: '360px' },
             }}
           >
-            <a
-              href='tel:+91 9056729370'
-              style={{ textDecoration: 'none', color: 'inherit' }}
-            >
-              <PhoneIcon
-                fontSize='large'
-                sx={{ color: 'primary.main', marginBottom: 1 }}
-              />
-            </a>
-            <a
-              href='tel:+91 9056729370'
-              style={{ textDecoration: 'none', color: 'inherit' }}
-            >
+            <a href='tel:+91 9056729370' style={{ textDecoration: 'none', color: 'inherit' }}>
+              <PhoneIcon fontSize='large' sx={{ color: 'primary.main', marginBottom: 1 }} />
               <Typography variant='h6' align='center' sx={{ marginTop: 1 }}>
                 PHONE NUMBER
               </Typography>
+              <Typography align='center'>+91 9056729370</Typography>
             </a>
-            <Typography align='center'>
-              <a
-                href='tel:+91 9056729370'
-                style={{ textDecoration: 'none', color: 'inherit' }}
-              >
-                +91 9056729370
-              </a>
-            </Typography>
           </Card>
         </Grid>
 
-        {/* Card 3: Email */}
+        {/* Email */}
         <Grid item xs={12} sm={6} md={4} data-aos='fade-up'>
           <Card
             sx={{
@@ -197,55 +158,23 @@ const ContactUs = () => {
               width: { xs: '295px', sm: '360px' },
             }}
           >
-            <a
-              href='mailto:  nexgeneducareacademy@gmail.com'
-              style={{ textDecoration: 'none', color: 'inherit' }}
-            >
-              <EmailIcon
-                fontSize='large'
-                sx={{ color: 'primary.main', marginBottom: 1 }}
-              />
-            </a>
-            <a
-              href='mailto:  nexgeneducareacademy@gmail.com'
-              style={{ textDecoration: 'none', color: 'inherit' }}
-            >
+            <a href='mailto:nexgeneducareacademy@gmail.com' style={{ textDecoration: 'none', color: 'inherit' }}>
+              <EmailIcon fontSize='large' sx={{ color: 'primary.main', marginBottom: 1 }} />
               <Typography variant='h6' align='center' sx={{ marginTop: 1 }}>
                 EMAIL
               </Typography>
+              <Typography align='center'>nexgeneducareacademy@gmail.com</Typography>
             </a>
-            <Typography
-              align='center'
-              component='a'
-              href='mailto:nexgeneducareacademy@gmail.com'
-              sx={{ textDecoration: 'none', color: 'inherit' }}
-            >
-              nexgeneducareacademy@gmail.com
-            </Typography>
           </Card>
         </Grid>
       </Grid>
 
-      {/* Bottom Section: Paragraph, Image, and Form */}
-      <Grid
-        container
-        spacing={4}
-        sx={{
-          marginTop: 4,
-          justifyContent: 'center',
-        }}
-      >
-        {/* Left Side: Paragraph and Circular Image */}
+      {/* Bottom Section */}
+      <Grid container spacing={4} sx={{ marginTop: 4, justifyContent: 'center' }}>
+        {/* Left: Text + Image */}
         <Grid item xs={12} md={6} data-aos='fade-right'>
           <Box>
-            <Typography
-              variant='h5'
-              gutterBottom
-              sx={{
-                textAlign: { xs: 'center', md: 'left' },
-                paddingLeft: { xs: 0, md: 2 },
-              }}
-            >
+            <Typography variant='h5' gutterBottom sx={{ textAlign: { xs: 'center', md: 'left' }, paddingLeft: { xs: 0, md: 2 } }}>
               Contact info
             </Typography>
             <Typography
@@ -264,12 +193,7 @@ const ContactUs = () => {
               <br />
               designed to meet the evolving demands of the modern world.
             </Typography>
-            <Box
-              sx={{
-                textAlign: 'center',
-                marginTop: 4,
-              }}
-            >
+            <Box sx={{ textAlign: 'center', marginTop: 4 }}>
               <img
                 src={Contact}
                 alt='Contact'
@@ -285,20 +209,14 @@ const ContactUs = () => {
           </Box>
         </Grid>
 
-        {/* Right Side: Contact Form */}
+        {/* Right: Contact Form */}
         <Grid item xs={12} md={6} data-aos='fade-left'>
-          <Typography
-            variant='h5'
-            gutterBottom
-            sx={{
-              textAlign: 'center',
-              marginBottom: 2,
-            }}
-          >
+          <Typography variant='h5' gutterBottom sx={{ textAlign: 'center', marginBottom: 2 }}>
             Get in touch
           </Typography>
           <Box
             component='form'
+            ref={formRef}
             onSubmit={handleSubmit}
             sx={{
               display: 'flex',
@@ -312,18 +230,18 @@ const ContactUs = () => {
           >
             <TextField
               label='Name'
-              name='name'
+              name='from_name'
               type='text'
-              value={formData.name}
+              value={formData.from_name}
               onChange={handleChange}
               fullWidth
               required
             />
             <TextField
               label='Email'
-              name='email'
+              name='from_email'
               type='email'
-              value={formData.email}
+              value={formData.from_email}
               onChange={handleChange}
               fullWidth
               required
@@ -346,18 +264,12 @@ const ContactUs = () => {
                 },
               }}
             >
-              <MenuItem value='Web Technologies Courses'>
-                Web Technologies Courses
-              </MenuItem>
+              <MenuItem value='Web Technologies Courses'>Web Technologies Courses</MenuItem>
               <MenuItem value='Accounts Courses'>Accounts Courses</MenuItem>
               <MenuItem value='Monograph Courses'>Monograph Courses</MenuItem>
               <MenuItem value='Languages Courses'>Languages Courses</MenuItem>
-              <MenuItem value='Hospitalist Courses'>
-                Hospitalist Courses
-              </MenuItem>
-              <MenuItem value='Competitive Courses'>
-                Competitive Courses
-              </MenuItem>
+              <MenuItem value='Hospitalist Courses'>Hospitalist Courses</MenuItem>
+              <MenuItem value='Competitive Courses'>Competitive Courses</MenuItem>
               <MenuItem value='Coaching Courses'>Coaching Courses</MenuItem>
               <MenuItem value='Cooking Courses'>Cooking Courses</MenuItem>
             </TextField>
