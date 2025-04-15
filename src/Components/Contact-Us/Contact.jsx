@@ -132,7 +132,7 @@ const ContactUs = () => {
                 rel='noopener noreferrer'
                 style={{ textDecoration: 'none', color: 'inherit' }}
               >
-                SCO 4-5, Second Floor, New Sunny <br />
+                SCO 4/5, Second Floor, New Sunny <br />
                 Enclave, Sector-125, Mohali, Kharar
                 <br />
                 Punjab - 140301
