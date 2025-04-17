@@ -63,6 +63,7 @@ const ContactUs = () => {
   };
 
   return (
+
     <Box sx={{ padding: 4, maxWidth: '1200px', margin: '0 auto', '@media (max-width: 600px)': { padding: 2 } }}>
    <ToastContainer position="top-right" autoClose={3000} />
       <Typography variant='h4' align='center' gutterBottom sx={{ fontSize: { xs: '1.8rem', sm: '2rem' }, marginTop: '10%' }}>
@@ -71,6 +72,7 @@ const ContactUs = () => {
 
       {/* Info Cards */}
       <Grid container spacing={3} sx={{ marginTop: 2, justifyContent: 'center' }}>
+        
         {/* Office Card */}
         <Grid item xs={12} sm={6} md={4} data-aos='fade-up'>
           <Card sx={cardStyle}>
