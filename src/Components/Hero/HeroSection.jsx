@@ -123,7 +123,7 @@ const HeroSection = () => {
           left: 0,
           width: '100%',
           height: '100%',
-          bgcolor: 'rgba(0, 0, 0, 0.5)', // Adjust the opacity here (0.6 is a good dark tone)
+          bgcolor: 'rgba(0, 0, 0, )', // Adjust the opacity here (0.6 is a good dark tone)
           zIndex: 1,
         }}
       />
