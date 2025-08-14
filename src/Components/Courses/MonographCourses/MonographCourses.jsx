@@ -79,16 +79,7 @@ const MonographCoursesCards = () => {
                 justifyContent='center'
                 sx={{ marginTop: 2 }}
               >
-                <Grid item>
-                  <Button variant='contained' size='small' color='primary'>
-                    Details
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant='outlined' size='small' color='secondary'>
-                    Enroll
-                  </Button>
-                </Grid>
+               
               </Grid>
             </CardContent>
           </Card>

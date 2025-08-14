@@ -67,16 +67,7 @@ const LanguagesCoursesCards = () => {
                 justifyContent='center'
                 sx={{ mt: 2 }}
               >
-                <Grid item>
-                  <Button variant='contained' size='small' color='primary'>
-                    Details
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant='outlined' size='small' color='secondary'>
-                    Buy Now
-                  </Button>
-                </Grid>
+               
               </Grid>
             </CardContent>
           </Card>
