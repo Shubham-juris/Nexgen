@@ -217,16 +217,17 @@ const Footer = () => {
         </Grid>
 
         {/* Footer Text */}
-        <Typography
-          variant='body2'
-          sx={{
-            marginTop: '20px',
-            color: '#ff0000ff',
-            textAlign: 'center',
-          }}
-        >
-        Powered By GREEKOLOGY
-        </Typography>
+    <Typography
+  variant='body2'
+  sx={{
+    marginTop: '20px',
+    textAlign: 'center',
+  }}
+>
+  <span style={{ color: '#000000' }}>Powered By </span>
+  <span style={{ color: '#ff0000ff' }}>GREEKOLOGY</span>
+</Typography>
+
       </Box>
     </Box>
   );
