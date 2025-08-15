@@ -35,13 +35,7 @@ const Search = styled('div')({
   alignItems: 'center',
 });
 
-const SearchIconWrapper = styled('div')({
-  position: 'absolute',
-  pointerEvents: 'none',
-  left: '10px',
-  top: '50%',
-  transform: 'translateY(-50%)',
-});
+
 
 const Input = styled(InputBase)({
   paddingLeft: '30px',
@@ -176,22 +170,7 @@ const Navbar = () => {
 
             {/* Right: Search & Buttons */}
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              {searchBarOpen ? (
-                <Search>
-                  <SearchIconWrapper>
-                    <SearchIcon />
-                  </SearchIconWrapper>
-                  <Input placeholder='Search...' />
-                  <IconButton color='inherit' onClick={toggleSearchBar}>
-                    <CloseIcon />
-                  </IconButton>
-                </Search>
-              ) : (
-                <IconButton color='inherit' onClick={toggleSearchBar}>
-                  <SearchIcon />
-                </IconButton>
-              )}
-
+              
               <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
                 <Button
                   sx={{ color: 'red', fontWeight: 'bold', fontSize: '1.1rem' }}

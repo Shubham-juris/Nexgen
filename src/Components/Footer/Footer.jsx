@@ -221,12 +221,11 @@ const Footer = () => {
           variant='body2'
           sx={{
             marginTop: '20px',
-            color: '#666',
+            color: '#ff0000ff',
             textAlign: 'center',
           }}
-          data-aos='fade-up'
         >
-          All Rights Reserved
+        Powered By GREEKOLOGY
         </Typography>
       </Box>
     </Box>
