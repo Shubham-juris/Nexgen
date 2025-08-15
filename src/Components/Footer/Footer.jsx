@@ -9,7 +9,7 @@ import {
   Phone,
   Email,
   LocationOn,
-  YouTube, // Import YouTube icon
+  YouTube,
 } from "@mui/icons-material";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -210,28 +210,35 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <YouTube sx={{ fontSize: "1.7rem" }} />{" "}
+                <YouTube sx={{ fontSize: "1.7rem" }} />
               </Link>
             </Box>
           </Grid>
         </Grid>
 
-        {/* Footer Text */}
-        <Typography
-          variant="body2"
+        {/* Horizontal Line and Footer Text */}
+        <Box
           sx={{
-            color: "#000", 
-            textAlign: "center",
-            padding: "10px 0",
+            borderTop: "1px solid black",
+            marginTop: "30px",
+            paddingTop: "10px",
           }}
         >
-          © 2025 Nexgen Educare Academy. All Rights Reserved.
-          <br />
-          Powered by{" "}
-          <Box component="span" sx={{ color: "#ff0000" }}>
-            Greekology
-          </Box>
-        </Typography>
+          <Typography
+            variant="body2"
+            sx={{
+              color: "#000",
+              textAlign: "center",
+            }}
+          >
+            © 2025 Nexgen Educare Academy. All Rights Reserved.
+            <br />
+            Powered by{" "}
+            <Box component="span" sx={{ color: "#ff0000" }}>
+              Greekology
+            </Box>
+          </Typography>
+        </Box>
       </Box>
     </Box>
   );
